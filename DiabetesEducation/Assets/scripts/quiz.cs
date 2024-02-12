@@ -32,7 +32,7 @@ public class quiz : MonoBehaviour
         questions = new List<Question>
         {
             new("Quel diabète touche le plus de personne ?", new string[4] { "Diabète de type I", "Diabète de type II", null, null }, 1),
-            new("Où je jette les aiguilles des seringues à insuline ?", new string[4] { "Dans une poubelle spéciale", "A la poubelle normale", null, null }, 1),
+            new("Où je jette les aiguilles des seringues à insuline ?", new string[4] { "Dans une poubelle spéciale", "A la poubelle normale", null, null }, 0),
             new("Quel facteur ne participe PAS à l’apparition du diabète de type 2 ?", new string[4] { "L’hérédité", "Une mauvaise alimentation", "Le stress", "Un manque d’activité physique" }, 0),
             //new("Qui est la meilleure waifu ?", new string[4] { "Anime girl 1", "Anime girl 2", "Anime girl 3", "Nicolas Cage" }, 3),  //A ENLEVER
             new("Combien existe-t-il de diabète?", new string[4] { "1", "2", "3", null }, 1),
