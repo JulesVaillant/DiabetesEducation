@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Quiz.unity
+    guid: 013bd0c588e3b1945bbad115a4975bac
+  - enabled: 1
+    path: Assets/Scenes/Cuisine_IG.unity
+    guid: 8477198e5430a054fa2234246d1819e9
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c39d5c0c4c123b24aae2182aa9e92662, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 5f8654207a0e15b4f9211a0f90519a2e, type: 2}
