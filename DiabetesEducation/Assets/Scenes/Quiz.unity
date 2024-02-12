@@ -10651,6 +10651,7 @@ GameObject:
   - component: {fileID: 951461432}
   - component: {fileID: 951461431}
   - component: {fileID: 951461434}
+  - component: {fileID: 951461435}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10748,6 +10749,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &951461435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951461429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db99db03a39f22a40b951be7fd0aa814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionText: {fileID: 729270898}
+  answerButtons:
+  - {fileID: 1594329428}
+  - {fileID: 917149865}
+  - {fileID: 324527963}
+  - {fileID: 253203805}
 --- !u!1 &968852172
 GameObject:
   m_ObjectHideFlags: 0
@@ -17587,6 +17606,7 @@ GameObject:
   - component: {fileID: 2004119531}
   - component: {fileID: 2004119530}
   - component: {fileID: 2004119529}
+  - component: {fileID: 2004119532}
   m_Layer: 5
   m_Name: GoBack
   m_TagString: Untagged
@@ -17658,7 +17678,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2004119530}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2004119532}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2004119530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17697,6 +17729,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004119527}
   m_CullTransparentMesh: 1
+--- !u!114 &2004119532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004119527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeda6cbb12092445930a4b74749cfcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Menu
 --- !u!1001 &2018339930
 PrefabInstance:
   m_ObjectHideFlags: 0
