@@ -10,10 +10,10 @@ public class quiz : MonoBehaviour
     public static bool success_quiz;
     public TMP_Text questionText;
     public Button[] answerButtons;
-    
+
     private List<Question> questions;
     private Question currentQuestion;
-    private int questionNumber;    
+    private int questionNumber;
     private int score, totalScore;
     private int answerDuration = 5;
     void Start()
@@ -25,10 +25,10 @@ public class quiz : MonoBehaviour
         ShowNextQuestion();
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int buttonIndex = i; 
+            int buttonIndex = i;
             answerButtons[i].onClick.AddListener(() => CheckAnswer(buttonIndex));
         }
-        questionNumber=0;
+        questionNumber = 0;
     }
 
     void InitQuestions()
@@ -48,29 +48,32 @@ public class quiz : MonoBehaviour
             new("Comment mesurer ma glycémie ?", new string[nb_reponses]{"A l’aide d’un glucomètre", "A l’aide d’un test urinaire", null, null}, 1),
             new("Le diabète m’empêche de vivre une vie normale ?", new string[nb_reponses]{"Oui", "Non", null, null}, 1)
         };
-        
+
     }
 
     void ShowNextQuestion()
     {
-        currentQuestion = questions[questionNumber];
+        //currentQuestion = questions[questionNumber];
+        currentQuestion = questions[Random.Range(0, questions.Count+1)];
         questionText.text = currentQuestion.question;
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             answerButtons[i].gameObject.SetActive(true);
-            if(currentQuestion.answers[i] == null) answerButtons[i].gameObject.SetActive(false);
-            answerButtons[i].GetComponentInChildren<TMP_Text>().text = currentQuestion.answers[i];  
+            if (currentQuestion.answers[i] == null) answerButtons[i].gameObject.SetActive(false);
+            answerButtons[i].GetComponentInChildren<TMP_Text>().text = currentQuestion.answers[i];
         }
-   }
+    }
 
-   void ShowEndScreen(){
-       for (int i=0; i<answerButtons.Length;i++){
+    void ShowEndScreen()
+    {
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
             answerButtons[i].gameObject.SetActive(false);
-       }
-       questionText.text = "Quiz terminé! \nTon score final est de "+score+" sur " + totalScore; 
+        }
+        questionText.text = "Quiz terminé! \nTon score final est de " + score + " sur " + totalScore;
         success_quiz = true;
-   }
+    }
 
     public void CheckAnswer(int buttonIndex)
     {
@@ -87,6 +90,7 @@ public class quiz : MonoBehaviour
             StartCoroutine(ChangeButtonCorrect(answerButtons[currentQuestion.correctAnswerIndex]));
         }
         totalScore++;
+        questions.Remove(currentQuestion);
     }
 
     IEnumerator ChangeButtonCorrect(Button button)
@@ -97,16 +101,19 @@ public class quiz : MonoBehaviour
         yield return new WaitForSeconds(answerDuration);
         buttonImage.color = originalColor;
 
-        if(questions.Count > questionNumber+1){
-            questionNumber++; 
+        if (questions.Count > questionNumber + 1)
+        {
+            questionNumber++;
             ShowNextQuestion();
         }
-        else{
+        else
+        {
             ShowEndScreen();
         }
     }
 
-    IEnumerator ChangeButtonWrong(Button button){
+    IEnumerator ChangeButtonWrong(Button button)
+    {
         Image buttonImage = button.GetComponent<Image>();
         Color originalColor = buttonImage.color;
         buttonImage.color = Color.red;
