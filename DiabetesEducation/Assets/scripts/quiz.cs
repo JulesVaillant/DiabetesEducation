@@ -10,12 +10,13 @@ public class quiz : MonoBehaviour
     public static bool success_quiz;
     public TMP_Text questionText;
     public Button[] answerButtons;
+    public GameObject trophy;
 
     private List<Question> questions;
     private Question currentQuestion;
     private int questionNumber;
     private int score, totalScore;
-    private int answerDuration = 5;
+    private int answerDuration = 1;
     void Start()
     {
         success_quiz = false;
@@ -54,7 +55,7 @@ public class quiz : MonoBehaviour
     void ShowNextQuestion()
     {
         //currentQuestion = questions[questionNumber];
-        currentQuestion = questions[Random.Range(0, questions.Count+1)];
+        currentQuestion = questions[Random.Range(0, questions.Count)];
         questionText.text = currentQuestion.question;
 
         for (int i = 0; i < answerButtons.Length; i++)
@@ -71,8 +72,9 @@ public class quiz : MonoBehaviour
         {
             answerButtons[i].gameObject.SetActive(false);
         }
-        questionText.text = "Quiz terminé! \nTon score final est de " + score + " sur " + totalScore;
+        questionText.text = "Quiz terminé! \nTon score final est de " + score + " sur " + totalScore+ "!\nVous avez obtenu le badge de Maître du diabète!";
         success_quiz = true;
+        trophy.SetActive(true);
     }
 
     public void CheckAnswer(int buttonIndex)
@@ -91,6 +93,7 @@ public class quiz : MonoBehaviour
         }
         totalScore++;
         questions.Remove(currentQuestion);
+        Debug.Log(questions.Count);
     }
 
     IEnumerator ChangeButtonCorrect(Button button)
@@ -101,9 +104,8 @@ public class quiz : MonoBehaviour
         yield return new WaitForSeconds(answerDuration);
         buttonImage.color = originalColor;
 
-        if (questions.Count > questionNumber + 1)
+        if (questions.Count > 0)
         {
-            questionNumber++;
             ShowNextQuestion();
         }
         else
