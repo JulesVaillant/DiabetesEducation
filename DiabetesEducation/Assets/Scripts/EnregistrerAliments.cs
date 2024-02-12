@@ -11,7 +11,6 @@ public class EnregistrerAliments : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         spawner.putted = true;
-        Debug.Log(other.name);
         if (other.tag.Equals(TagName))
         {
                 canva.Valid();
