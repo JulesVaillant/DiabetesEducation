@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class EnregistrerAliments : MonoBehaviour
 {
-    [SerializeField] List<GameObject> right;
     [SerializeField] PrefabSpawn spawner;
     [SerializeField] GestionEcran canva;
-    private bool found;
+    [SerializeField] string TagName;
 
     private void OnTriggerEnter(Collider other)
     {
         spawner.putted = true;
-        found = false;
-        foreach (var item in right)
+        Debug.Log(other.name);
+        if (other.tag.Equals(TagName))
         {
-            if (item.name.Equals(other.name))
-            {
                 canva.Valid();
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-        {
+        }else{
             canva.Invalid();
         }
         Destroy(other.gameObject);

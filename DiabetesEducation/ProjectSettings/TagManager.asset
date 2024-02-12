@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - High_IG
+  - Medium_IG
+  - Low_IG
   layers:
   - Default
   - TransparentFX
