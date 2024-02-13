@@ -6,6 +6,7 @@ public class ShowTrophies : MonoBehaviour
 {
     public GameObject trophyQuiz;
     public GameObject trophyIG;
+    public GameObject trophyDisco;
     void Start()
     {
         if(quiz.success_quiz){
@@ -14,6 +15,10 @@ public class ShowTrophies : MonoBehaviour
         if (GestionEcran.victory)
         {
             trophyIG.SetActive(true);
+        }
+        if (Discovery.success)
+        {
+            trophyDisco.SetActive(true);
         }
     }
 }
