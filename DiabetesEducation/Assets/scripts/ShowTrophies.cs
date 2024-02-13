@@ -11,5 +11,9 @@ public class ShowTrophies : MonoBehaviour
         if(quiz.success_quiz){
             trophyQuiz.SetActive(true);
         }
+        if (GestionEcran.victory)
+        {
+            trophyIG.SetActive(true);
+        }
     }
 }
